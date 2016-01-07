@@ -1,0 +1,3 @@
+<?php
+class MageProfis_Slider_Block_Slides extends Mage_Core_Block_Template {	protected $_slides = null;		public function __construct(){        $this->setBestsellerProducts();        parent::_construct();        $this->addData(array('cache_lifetime' => 86400)); // 24 hours        $this->addCacheTag(array(            Mage_Cms_Model_Block::CACHE_TAG,        ));    }	
+	public function getSlides() {		if(is_null($this->_slides))		{			$collection = Mage::getModel('cms/block')->getCollection()					->addFieldToFilter('identifier', array('like'=>'slide_%'))					->addFieldToFilter('is_active', 1);			$this->_slides = $collection;		}			return $this->_slides;		}}

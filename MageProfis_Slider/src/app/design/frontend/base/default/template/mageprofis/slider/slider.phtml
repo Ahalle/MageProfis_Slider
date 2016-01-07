@@ -1,0 +1,29 @@
+<?php $_slides = $this->getSlides(); ?>
+<?php if (!empty($_slides)): ?>
+	<?php $slides_count = count($_slides);?>
+	<?php $y = 0;?>
+	
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="4000">
+	  <!-- Positionsanzeiger -->
+	  <?php if($slides_count <= 0):?>
+		  <ol class="carousel-indicators">
+			<?php for($i = 0; $i < $slides_count; $i++):?>
+				<?php if($i == 0):?>
+					<li data-target="#carousel-example-generic" data-slide-to="<?php echo $i;?>" class="active"></li>
+				<?php else: ?>
+					<li data-target="#carousel-example-generic" data-slide-to="<?php echo $i;?>"></li>
+				<?php endif;?>
+			<?php endfor;?>
+		  </ol>
+	  <?php endif;?>
+		<!-- Verpackung für die Elemente -->
+		<div class="carousel-inner" role="listbox">
+			<?php foreach ($_slides as $_slide): ?>
+				<div class="item <?php if($y == 0) echo 'active';?>">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($_slide->getId())->toHtml(); ?>
+				</div>
+				<?php $y++;?>
+			<?php endforeach; ?>
+		</div>
+	</div>
+<?php endif; ?>

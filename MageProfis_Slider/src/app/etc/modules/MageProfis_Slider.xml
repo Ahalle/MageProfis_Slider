@@ -1,0 +1,8 @@
+<config>
+   <modules>
+      <MageProfis_Slider>
+         <active>true</active>
+         <codePool>local</codePool>
+      </MageProfis_Slider>
+   </modules>
+</config>
